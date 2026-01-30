@@ -17,8 +17,7 @@ jobs:
   build-and-push:
 
     runs-on: ubuntu-latest
-    env:    
-      DOCKER_BUILDKIT: 0
+  
     steps:
 
       - name: Checkout source
@@ -53,15 +52,7 @@ jobs:
  
       - name: Build Docker image
 
-        run: |
-
-          docker build \
-
-            -t docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}:${IMAGE_TAG} \
-
-            -t docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest \
-
-            .
+        run: docker build -t docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}:${IMAGE_TAG} -t docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest .
  
       - name: Push Docker image
 
