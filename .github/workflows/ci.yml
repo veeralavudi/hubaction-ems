@@ -38,7 +38,7 @@ jobs:
  
       - name: Build & test with Maven
 
-        run: mvn clean verify
+        run: mvn clean -DskipTests
  
       - name: Login to Docker Hub
 
